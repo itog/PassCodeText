@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.broooapps.otpedittext2.OnCompleteListener;
+import com.broooapps.otpedittext2.OnInputLengthChangeListener;
 import com.broooapps.otpedittext2.OtpEditText;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(String value) {
                 textDisplay.setText("Entered Value: " + value);
+            }
+        });
+
+        otpEditText.setOnInputLengthChangeListener(new OnInputLengthChangeListener() {
+            @Override
+            public void onInputLengthChange(int num) {
+                Log.v("OptEditTextSample", String.format("Input length = %d", num));
             }
         });
     }

@@ -63,6 +63,7 @@ public class OtpEditText extends AppCompatEditText implements TextWatcher {
     float[] hintWidth = new float[1];
 
     private OnCompleteListener completeListener;
+    private OnInputLengthChangeListener inputLengthChangeListener;
 
     public OtpEditText(Context context) {
         super(context);
@@ -332,6 +333,7 @@ public class OtpEditText extends AppCompatEditText implements TextWatcher {
         if (s.length() == mNumChars) {
             completeListener.onComplete(String.valueOf(s));
         }
+        inputLengthChangeListener.onInputLengthChange(s.length());
     }
 
 
@@ -342,5 +344,9 @@ public class OtpEditText extends AppCompatEditText implements TextWatcher {
 
     public void setOnCompleteListener(OnCompleteListener listener) {
         completeListener = listener;
+    }
+
+    public void setOnInputLengthChangeListener(OnInputLengthChangeListener listener) {
+        inputLengthChangeListener = listener;
     }
 }
