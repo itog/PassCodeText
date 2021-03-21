@@ -330,12 +330,13 @@ public class OtpEditText extends AppCompatEditText implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s) {
-        if (s.length() == mNumChars) {
+        if (s.length() == mNumChars && completeListener!= null) {
             completeListener.onComplete(String.valueOf(s));
         }
-        inputLengthChangeListener.onInputLengthChange(s.length());
+        if (inputLengthChangeListener != null) {
+            inputLengthChangeListener.onInputLengthChange(s.length());
+        }
     }
-
 
     @Override
     public void setOnClickListener(OnClickListener l) {
